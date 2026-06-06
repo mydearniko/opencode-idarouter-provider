@@ -1,0 +1,39 @@
+{
+  "name": "opencode-idarouter-provider",
+  "version": "0.1.0",
+  "description": "OpenCode plugin that loads providers and models from idarouter.",
+  "type": "module",
+  "main": "./idarouter-provider.js",
+  "exports": "./idarouter-provider.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mydearniko/opencode-idarouter-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mydearniko/opencode-idarouter-provider/issues"
+  },
+  "homepage": "https://github.com/mydearniko/opencode-idarouter-provider#readme",
+  "files": [
+    "idarouter-provider.js",
+    "README.md"
+  ],
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "idarouter",
+    "llm",
+    "provider"
+  ],
+  "license": "UNLICENSED",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "check": "node --check idarouter-provider.js",
+    "pack:dry-run": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
