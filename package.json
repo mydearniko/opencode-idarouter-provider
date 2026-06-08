@@ -15,7 +15,8 @@
   "homepage": "https://github.com/mydearniko/opencode-idarouter-provider#readme",
   "files": [
     "idarouter-provider.js",
-    "README.md"
+    "README.md",
+    "RELEASE.md"
   ],
   "keywords": [
     "opencode",
@@ -31,6 +32,7 @@
   },
   "scripts": {
     "check": "node --check idarouter-provider.js",
+    "prepublishOnly": "npm run check",
     "pack:dry-run": "npm pack --dry-run"
   },
   "engines": {

@@ -2,7 +2,7 @@
  * OpenCode plugin for idarouter.
  *
  * Install as a local or global plugin. When IDAROUTER_URL and
- * IDAROUTER_API_KEY are set, it fetches /api/providers from an idarouter server
+ * IDAROUTER_API_KEY or IDAROUTER_KEY are set, it fetches /api/providers from an idarouter server
  * and makes those providers/models the only enabled OpenCode providers. If
  * either value is missing, the plugin is a no-op and leaves OpenCode's normal
  * providers/models untouched.
@@ -10,7 +10,7 @@
 export const IdaRouterProvider = async (_ctx, options = {}) => {
   const load = async () => {
     const baseURL = String(options.baseURL || process.env.IDAROUTER_URL || "").replace(/\/$/, "")
-    const apiKey = String(options.apiKey || process.env.IDAROUTER_API_KEY || "")
+    const apiKey = String(options.apiKey || process.env.IDAROUTER_API_KEY || process.env.IDAROUTER_KEY || "")
     const timeoutMs = Number(options.timeoutMs || 5000)
     if (!baseURL || !apiKey) return null
 

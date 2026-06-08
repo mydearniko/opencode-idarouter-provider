@@ -2,7 +2,7 @@
 
 This plugin makes any OpenCode instance use an idarouter server as a live model/provider source.
 
-When `IDAROUTER_URL` and `IDAROUTER_API_KEY` are both set, the plugin enables only router-discovered providers/models and hides all other OpenCode providers. When either value is missing, the plugin is a no-op: it does not add idarouter providers and leaves normal OpenCode providers/models unchanged.
+When `IDAROUTER_URL` and `IDAROUTER_API_KEY` are both set, the plugin enables only router-discovered providers/models and hides all other OpenCode providers. `IDAROUTER_KEY` is also accepted as a backwards-compatible API key name. When credentials are missing, the plugin is a no-op: it does not add idarouter providers and leaves normal OpenCode providers/models unchanged.
 
 ## Install from npm
 
@@ -22,6 +22,8 @@ export IDAROUTER_URL="https://ai.idanya.cc"
 export IDAROUTER_API_KEY="sk-idarouter-..."
 opencode
 ```
+
+If an existing environment already uses `IDAROUTER_KEY`, that works too.
 
 OpenCode installs npm plugins automatically at startup and caches them under `~/.cache/opencode/node_modules/`.
 
@@ -78,10 +80,10 @@ For updates:
 
 ```bash
 npm version patch
-npm publish
+git push origin main --follow-tags
 ```
 
-After publishing, restart OpenCode on each machine. If config uses an unpinned package name, OpenCode can install the latest version on startup; if config pins `@x.y.z`, update that version in `opencode.json`.
+After publishing, restart OpenCode on each machine. If config uses an unpinned package name, OpenCode can install the latest version on startup; if config pins `@x.y.z`, update that version in `opencode.json`. See `RELEASE.md` for the first publish and trusted publishing setup.
 
 ## Behavior
 
@@ -109,5 +111,5 @@ Disable polling or change interval:
 ## Recommended deployment
 
 - Create a dedicated API key in idarouter Web UI -> API Keys for each OpenCode machine/user.
-- Put `IDAROUTER_URL` and `IDAROUTER_API_KEY` in the machine's shell profile, systemd user environment, direnv file, or secrets manager.
+- Put `IDAROUTER_URL` and `IDAROUTER_API_KEY` in the machine's shell profile, systemd user environment, direnv file, or secrets manager. Existing setups can use `IDAROUTER_KEY` instead of `IDAROUTER_API_KEY`.
 - Avoid embedding API keys in project `opencode.json` if the project is shared.
